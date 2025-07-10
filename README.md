@@ -23,7 +23,7 @@ Each task automates a real-world system admin function such as directory monitor
 ---
 
 ## 📁 Folder Structure
-
+```
 rhel-admin-assignment/
 ├── Task_11_IP_Blacklist_Updater/
 │ └── ip_blacklist_updater.sh
@@ -37,6 +37,7 @@ rhel-admin-assignment/
 ├── Task_38_Directory_Usage_Reporter/
 │ └── directory_usage_reporter.sh
 └── README.md
+```
 
 ---
 
