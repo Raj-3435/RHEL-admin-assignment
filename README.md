@@ -1,4 +1,4 @@
-# 🛠️ RHEL Shell Scripting Assignment – Aditya Raj
+# 🛠️ RHEL Shell Scripting Assignment 
 
 ## 📅 Date: July 10, 2025
 
@@ -88,7 +88,7 @@ Reports disk usage of subdirectories under a given path. Useful for monitoring s
 chmod +x scriptname.sh
 ./scriptname.sh
 Or schedule via `crontab -e` for automation.
-
+```
 ---
 ## 🧪 Testing Instructions
 
@@ -98,7 +98,7 @@ For example:
 ```bash
 sudo ./ip_blacklist_updater.sh
 sudo ./smartctl_health_report.sh
-
+```
 ---
 
 ## 📁 Notes
@@ -117,12 +117,14 @@ Each script can be scheduled using `crontab -e`. Example:
 
 # Run directory usage report every day at 8:00 AM
 0 8 * * * /usr/local/bin/directory_usage_reporter.sh
-
+```
 ---
 
 ## 🙋‍♂️ Author
 
 **Name:** Aditya Raj 
+
 **Email:** adityaraj3435@gmail.com 
+
 **GitHub:** [Raj-3435](https://github.com/Raj-3435)
 
