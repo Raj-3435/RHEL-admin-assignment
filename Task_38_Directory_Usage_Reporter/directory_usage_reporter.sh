@@ -1,18 +1,27 @@
 #!/bin/bash
 
-# CONFIGURATION
-REPORT_FILE="/tmp/disk_usage_report.txt"
-EMAIL="adityarajic1101@gmail.com" 
-SUBJECT="Daily Disk Usage Report - Top 10 Directories"
+EMAIL="adityarajic1101@gmail.com"
+HOST=$(hostname)
+NOW=$(date +"%Y-%m-%d %H:%M:%S")
+SUBJECT="Disk Usage Report - Top 10 Directories on $HOST at $NOW"
 
-# STEP 1: Calculate Disk Usage
-echo "Top 10 Space-Consuming Directories as of $(date)" > "$REPORT_FILE"
-echo "====================================================" >> "$REPORT_FILE"
-du -ahx / | sort -rh | head -n 10 >> "$REPORT_FILE"
+# Generate the disk usage report as a string
+BODY=$(cat <<EOF
+Hello Administrator,
 
-# STEP 2: Email the Report
-if command -v mail > /dev/null; then
-    mail -s "$SUBJECT" "$EMAIL" < "$REPORT_FILE"
-else
-    echo "Mail command not found. Please install mailutils or mailx to send email."
-fi
+This is an automated disk usage report from host: $HOST
+
+Status Update:
+--------------
+As of $NOW, here are the top 10 space-consuming directories:
+
+$(du -ahx / | sort -rh | head -n 10 | awk '{printf "%-10s %s\n", $1, $2}')
+
+Best regards,
+Disk Monitor Script
+$HOST
+EOF
+)
+
+# Send the email
+echo "$BODY" | mail -s "$SUBJECT" "$EMAIL"
